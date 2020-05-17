@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SweetBox implements BoxMethods {
-    private final List<Sweet> sweets = new ArrayList<>();
+    private List<Sweet> sweets = new ArrayList<>();
 
     @Override
     public void addSweet(Sweet sweet) {
@@ -17,13 +17,13 @@ public class SweetBox implements BoxMethods {
     }
 
     @Override
-    public int getWeight() {
-        return sweets.stream().mapToInt(Sweet::getWeight).sum();
+    public double getWeight() {
+        return sweets.stream().mapToDouble(Sweet::getWeight).sum();
     }
 
     @Override
-    public int getPrice() {
-        return sweets.stream().mapToInt(Sweet::getPrice).sum();
+    public double getPrice() {
+        return sweets.stream().mapToDouble(Sweet::getPrice).sum();
     }
 
     @Override
@@ -36,4 +36,25 @@ public class SweetBox implements BoxMethods {
         sweetsSorted.forEach(System.out::println);
     }
 
+    @Override
+    public void reduceWeight(double weight) {
+        sweets = sweets.stream()
+                .sorted(Comparator.comparing(Sweet::getWeight))
+                .collect(Collectors.toList());
+
+        while (weight < getWeight()) {
+            sweets.remove(0);
+        }
+    }
+
+    @Override
+    public void reducePrice(double price) {
+        sweets = sweets.stream()
+                .sorted(Comparator.comparing(Sweet::getPrice))
+                .collect(Collectors.toList());
+
+        while (price < getPrice()) {
+            sweets.remove(0);
+        }
+    }
 }

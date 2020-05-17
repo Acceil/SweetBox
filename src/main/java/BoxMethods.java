@@ -4,9 +4,13 @@ public interface BoxMethods {
 
     void removeSweet(Sweet sweet);
 
-    int getWeight();
+    double getWeight();
 
-    int getPrice();
+    double getPrice();
 
     void getSweetInfo();
+
+    void reduceWeight(double weight);
+
+    void reducePrice(double price);
 }

@@ -1,9 +1,9 @@
 public abstract class Sweet {
     private String name;
-    private int weight;
-    private int price;
+    private double weight;
+    private double price;
 
-    public Sweet(String name, int weight, int price) {
+    public Sweet(String name, double weight, double price) {
         this.name = name;
         this.weight = weight;
         this.price = price;
@@ -24,7 +24,7 @@ public abstract class Sweet {
         this.name = name;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
@@ -32,7 +32,7 @@ public abstract class Sweet {
         this.weight = weight;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
